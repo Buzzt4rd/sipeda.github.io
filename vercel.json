@@ -1,16 +1,19 @@
 {
     "version": 2,
-    "builds": [
-      {
-        "src": "public/index.php",
-        "use": "@vercel/php"
-      }
-    ],
+    "functions": {
+        "api/index.php": {
+            "runtime": "vercel-php@0.6.0"
+        }
+    },
     "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "public/index.php"
-      }
+        {
+            "src": "/img/(.*)",
+            "dest": "/public/img/"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/api/index.php"
+        }
     ],
     "env": {
       "APP_KEY": "base64:QPHTmLKqUtKC2buCB9fSTNrz0buDvt+C+GJjCGGzKQ8=",
