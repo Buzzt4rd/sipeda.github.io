@@ -1,0 +1,4 @@
+[submodule "SIPEDA"]
+	url = https://github.com/Buzzt4rd/sipeda.github.io.git
+[submodule "sipeda.github.io"]
+	url = https://github.com/Buzzt4rd/sipeda.github.io.git
