@@ -5,8 +5,7 @@
     <div class="card shadow-lg ">
       <div class="card-header pb-0 pt-3 ">
         <div class="{{ (Request::is('rtl') ? 'float-end' : 'float-start') }}">
-          <h5 class="mt-3 mb-0">Soft UI Configurator</h5>
-          <p>See our dashboard options.</p>
+          <h5 class="mt-3 mb-0">SIPEDA Setting</h5>
         </div>
         <div class="{{ (Request::is('rtl') ? 'float-start mt-4' : 'float-end mt-4') }}">
           <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
@@ -32,7 +31,7 @@
           </div>
         </a>
         <!-- Sidenav Type -->
-        <div class="mt-3">
+        {{-- <div class="mt-3">
           <h6 class="mb-0">Sidenav Type</h6>
           <p class="text-sm">Choose between 2 different sidenav types.</p>
         </div>
@@ -40,9 +39,9 @@
           <button class="btn bg-gradient-primary w-100 px-3 mb-2 active" data-class="bg-transparent" onclick="sidebarType(this)">Transparent</button>
           <button class="btn bg-gradient-primary w-100 px-3 mb-2  {{ (Request::is('rtl') ? 'me-2' : 'ms-2') }}" data-class="bg-white" onclick="sidebarType(this)">White</button>
         </div>
-        <p class="text-sm d-xl-none d-block mt-2">You can change the sidenav type just on desktop view.</p>
+        <p class="text-sm d-xl-none d-block mt-2">You can change the sidenav type just on desktop view.</p> --}}
         <!-- Navbar Fixed -->
-        <div class="mt-3">
+        {{-- <div class="mt-3">
           <h6 class="mb-0">Navbar Fixed</h6>
         </div>
         <div class="form-check form-switch ps-0">
@@ -60,7 +59,7 @@
           <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/soft-ui-dashboard-pro-laravel" class="btn btn-dark mb-0 me-2" target="_blank">
             <i class="fab fa-facebook-square me-1" aria-hidden="true"></i> Share
           </a>
-        </div>
+        </div> --}}
       </div>
     </div>
   </div>

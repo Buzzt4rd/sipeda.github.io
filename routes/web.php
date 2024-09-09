@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ChangePasswordController;
+use App\Http\Controllers\DataController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InfoUserController;
 use App\Http\Controllers\RegisterController;
@@ -10,66 +11,43 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-
 Route::group(['middleware' => 'auth'], function () {
-
+	// dashboard
 	Route::get('/', [HomeController::class, 'home']);
 	Route::get('dashboard', function () {
 		return view('dashboard');
 	})->name('dashboard');
 
-	Route::get('billing', function () {
-		return view('billing');
-	})->name('billing');
+    // data management
+    // Route::resource('/manage/datas', DataController::class);
 
-	Route::get('profile', function () {
-		return view('profile');
-	})->name('profile');
+    // Route::get('/data-management', function() {
+    //     return view('manage/datas/index');
+    // })->name('data-management');
+    Route::get('/data-management', [DataController::class, 'index'])->name('data-management');
 
-	Route::get('rtl', function () {
-		return view('rtl');
-	})->name('rtl');
+    // add data
+    Route::get('/add-data', [DataController::class, 'create'])->name('add-data');
+    Route::post('/add-data', [DataController::class,'store'])->name('store-data');
 
-	Route::get('user-management', function () {
-		return view('manage/data-management');
-	})->name('user-management');
+    // show data
+    Route::get('/detail-data/{nama}', [DataController::class, 'show'])->name('detail-data');
 
-	Route::get('tables', function () {
-		return view('tables');
-	})->name('tables');
+    //edit data
+    Route::get('/edit-data/{id}/edit', [DataController::class, 'edit'])->name('edit-data');
+    Route::put('/edit-data/{id}', [DataController::class, 'update'])->name('update-data');
 
-	Route::get('virtual-reality', function () {
-		return view('virtual-reality');
-	})->name('virtual-reality');
+    // destroy data
+    Route::delete('/manage/datas/{id}', [DataController::class, 'destroy'])->name('delete-data');
 
-	Route::get('static-sign-in', function () {
-		return view('static-sign-in');
-	})->name('sign-in');
-
-	Route::get('static-sign-up', function () {
-		return view('static-sign-up');
-	})->name('sign-up');
-
+    // logout
 	Route::get('/logout', [SessionsController::class, 'destroy']);
-	Route::get('/profile-setting', [InfoUserController::class, 'create']);
-	Route::post('/profile-setting', [InfoUserController::class, 'store']);
+
+    //login
 	Route::get('/login', function () {
 		return view('dashboard');
 	})->name('sign-up');
 });
-
-
 
 Route::group(['middleware' => 'guest'], function () {
 	Route::get('/register', [RegisterController::class, 'create']);
